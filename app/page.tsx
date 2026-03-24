@@ -283,10 +283,70 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Featured: Glance */}
+          <div className="mb-8 rounded-2xl border border-gray-100 bg-gray-50 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div className="flex flex-col lg:flex-row">
+              {/* Text side */}
+              <div className="lg:w-2/5 p-8 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">Glance</h3>
+                  <p className="text-xs text-gray-400 mb-5">Ambient e-ink style mobile dashboard</p>
+                  <ul className="space-y-2.5">
+                    {[
+                      "Built a React Native app that transforms into a minimal black-and-white e-ink style display when the phone is rotated to landscape — no extra hardware required",
+                      "Aggregates to-do lists, calendar events, and music playback into a single ambient view, replacing third-party e-ink display accessories",
+                      "Engineered a MongoDB backend to sync user data across sessions with real-time updates and persistent state",
+                    ].map((b) => (
+                      <li key={b} className="text-sm text-gray-600 flex gap-2">
+                        <span className="text-[#BF5700] shrink-0 mt-0.5">▸</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex flex-wrap gap-1.5 mt-6">
+                  {["React Native", "Expo", "MongoDB"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-medium bg-orange-50 text-[#BF5700] border border-orange-200 px-2 py-0.5 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Screenshot side */}
+              <div className="lg:w-3/5 bg-gradient-to-br from-slate-100 to-slate-200 p-6 flex items-center justify-center relative min-h-[340px]">
+                {/* Back screenshot (landscape dashboard) */}
+                <div className="absolute right-4 top-6 w-[62%] rounded-xl overflow-hidden shadow-xl border border-white/60 rotate-1 z-10">
+                  <Image
+                    src="/glance-2.png"
+                    alt="Glance landscape dashboard"
+                    width={700}
+                    height={500}
+                    className="w-full h-auto object-cover object-top"
+                    style={{ maxHeight: "220px" }}
+                  />
+                </div>
+                {/* Front screenshot (portrait view) */}
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 w-[28%] rounded-xl overflow-hidden shadow-2xl border border-white/80 -rotate-1 z-20">
+                  <Image
+                    src="/glance-1.jpg"
+                    alt="Glance portrait view"
+                    width={400}
+                    height={700}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Other projects */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects
-              .filter((p) => !p.inProgress)
+              .filter((p) => !p.inProgress && p.name !== "Glance")
               .map(({ name, subtitle, bullets, tags }) => (
                 <div
                   key={name}
