@@ -129,13 +129,15 @@ export default function Home() {
     { href: "#skills", label: "Skills" },
   ];
 
+  const resumeHref = "/resume.pdf";
+
   return (
     <div className="bg-white text-gray-900" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full bg-[#BF5700] text-white shadow-md z-50">
         <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
           <span className="font-bold text-lg tracking-wide">Vaibav Subramanian</span>
-          <div className="hidden md:flex space-x-6 text-sm font-medium">
+          <div className="hidden md:flex space-x-6 text-sm font-medium items-center">
             {navLinks.map(({ href, label }) => (
               <a
                 key={href}
@@ -147,6 +149,14 @@ export default function Home() {
                 {label}
               </a>
             ))}
+            <a
+              href={resumeHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-[#BF5700] px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-orange-100 transition"
+            >
+              Resume
+            </a>
           </div>
         </div>
       </nav>
@@ -162,7 +172,7 @@ export default function Home() {
         <p className="text-xl md:text-2xl font-light text-orange-100 mb-8 max-w-xl">
           Software Engineer · ML Researcher · Builder
         </p>
-        <div className="flex gap-4 text-sm font-semibold">
+        <div className="flex gap-4 text-sm font-semibold flex-wrap justify-center">
           <a
             href="#experience"
             className="bg-white text-[#BF5700] px-6 py-2 rounded-full hover:bg-orange-100 transition shadow"
@@ -174,6 +184,14 @@ export default function Home() {
             className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-[#BF5700] transition"
           >
             See Projects
+          </a>
+          <a
+            href={resumeHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-[#BF5700] transition"
+          >
+            Resume
           </a>
         </div>
         <div className="absolute bottom-8 animate-bounce text-orange-200 text-2xl select-none">↓</div>
