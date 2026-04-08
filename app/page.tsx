@@ -300,17 +300,17 @@ function AboutContent() {
         <pre
           style={{
             fontFamily: "var(--font-geist-mono), monospace",
-            fontSize: "5px",
+            fontSize: "4px",
             lineHeight: 1,
-            color: "rgba(56, 139, 253, 0.45)",
+            color: "rgb(255, 255, 255)",
             margin: 0,
-            padding: "8px",
+            padding: "0px",
             border: "1px solid #21262d",
             borderRadius: "6px",
             backgroundColor: "#010409",
             flexShrink: 0,
-            userSelect: "none",
-            whiteSpace: "pre",
+            // userSelect: "none",
+            // whiteSpace: "pre",
             width: "fit-content",
           }}
         >
@@ -1049,7 +1049,9 @@ export default function Home() {
                 Select a file from the explorer
               </div>
             ) : (
-              editorContent[activeFile]
+              <div style={{ maxWidth: "860px", margin: "0 auto" }}>
+                {editorContent[activeFile]}
+              </div>
             )}
           </div>
         </div>
