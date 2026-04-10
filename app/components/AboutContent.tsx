@@ -190,8 +190,17 @@ export function AboutContent() {
       {/* Deployed Projects */}
       <div style={{ marginBottom: "40px" }}>
         <p style={S.sectionHeading}>Deployed Projects</p>
-        <div style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "13px", color: "#555555" }}>
-          coming soon..
+        <div style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "13px", display: "flex", flexDirection: "column", gap: "6px" }}>
+          <a
+            href="https://authai-flax.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#e0af68", textDecoration: "none" }}
+            onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
+            onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
+          >
+            authai-flax.vercel.app
+          </a>
         </div>
       </div>
 
