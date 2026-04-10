@@ -104,7 +104,7 @@ export function AboutContent() {
             Software Engineer · ML Researcher · Builder
           </p>
           <p style={{ fontSize: "13.5px", fontFamily: "var(--font-geist-sans), sans-serif", margin: 0, lineHeight: 1.7 }}>
-            <span style={{ color: "#7dcfff" }}>CS student</span>
+            <span style={{ color: "#7dcfff" }}>ECE student</span>
             <span style={{ color: "#777777" }}> at the </span>
             <span style={{ color: "#79c0ff" }}>University of Texas at Austin</span>
             <span style={{ color: "#777777" }}>, graduating </span>
@@ -184,6 +184,14 @@ export function AboutContent() {
               </span>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Deployed Projects */}
+      <div style={{ marginBottom: "40px" }}>
+        <p style={S.sectionHeading}>Deployed Projects</p>
+        <div style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "13px", color: "#555555" }}>
+          coming soon..
         </div>
       </div>
 
