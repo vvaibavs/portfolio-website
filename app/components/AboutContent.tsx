@@ -201,6 +201,16 @@ export function AboutContent() {
           >
             authai-flax.vercel.app
           </a>
+          <a
+            href="https://decksensehax.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#e0af68", textDecoration: "none" }}
+            onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
+            onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
+          >
+            decksensehax.vercel.app
+          </a>
         </div>
       </div>
 
