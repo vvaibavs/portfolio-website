@@ -68,6 +68,63 @@ function SkillChip({ label, color }: { label: string; color: string }) {
   );
 }
 
+function DeployedCard({ name, url, href, desc, tags }: {
+  name: string;
+  url: string;
+  href: string;
+  desc: string;
+  tags: { label: string; color: string }[];
+}) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ textDecoration: "none" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div
+        style={{
+          ...S.card,
+          marginBottom: 0,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          border: hovered ? "1px solid #4a9eff55" : "1px solid #2a2a2a",
+          transition: "border-color 0.15s",
+        }}
+      >
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "13px", color: "#79c0ff", fontFamily: "var(--font-geist-mono), monospace", fontWeight: 700 }}>
+              {name}
+            </span>
+            {tags.map(({ label, color }) => (
+              <span
+                key={label}
+                style={{ fontSize: "10px", fontFamily: "var(--font-geist-mono), monospace", color, backgroundColor: "#0a0a0a", border: `1px solid ${color}33`, padding: "1px 6px" }}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+          <div style={{ fontSize: "11px", color: "#e0af68", fontFamily: "var(--font-geist-mono), monospace", marginBottom: "4px" }}>
+            {url}
+          </div>
+          <div style={{ fontSize: "12px", color: "#555555", fontFamily: "var(--font-geist-sans), sans-serif" }}>
+            {desc}
+          </div>
+        </div>
+        <span style={{ fontSize: "16px", color: hovered ? "#4a9eff" : "#333333", marginLeft: "20px", flexShrink: 0, transition: "color 0.15s" }}>
+          ↗
+        </span>
+      </div>
+    </a>
+  );
+}
+
 export function AboutContent() {
   const [art, setArt] = useState(ASCII_FRAMES[0]);
   useEffect(() => {
@@ -190,27 +247,32 @@ export function AboutContent() {
       {/* Deployed Projects */}
       <div style={{ marginBottom: "40px" }}>
         <p style={S.sectionHeading}>Deployed Projects</p>
-        <div style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "13px", display: "flex", flexDirection: "column", gap: "6px" }}>
-          <a
-            href="https://authai-flax.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#e0af68", textDecoration: "none" }}
-            onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
-            onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
-          >
-            authai-flax.vercel.app
-          </a>
-          <a
-            href="https://decksensehax.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#e0af68", textDecoration: "none" }}
-            onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
-            onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
-          >
-            decksensehax.vercel.app
-          </a>
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          {[
+            {
+              name: "AI Prior Authorization",
+              url: "authai-flax.vercel.app",
+              href: "https://authai-flax.vercel.app/",
+              desc: "AI-powered prior authorization drafting for independent medical practices",
+              tags: [{ label: "Next.js", color: "#7dcfff" }, { label: "LLM API", color: "#f7768e" }],
+            },
+            {
+              name: "DeckSense",
+              url: "decksensehax.vercel.app",
+              href: "https://decksensehax.vercel.app/",
+              desc: "AI-powered deck analysis platform built at a hackathon",
+              tags: [],
+            },
+            {
+              name: "AI Bid Extractor",
+              url: "ai-bid-extractor.vercel.app",
+              href: "https://ai-bid-extractor.vercel.app/",
+              desc: "Bid document analyzer powered by Google Gemini AI",
+              tags: [{ label: "React", color: "#7aa2f7" }, { label: "FastAPI", color: "#4ec9b0" }, { label: "Gemini AI", color: "#4a9eff" }],
+            },
+          ].map(({ name, url, href, desc, tags }) => (
+            <DeployedCard key={url} name={name} url={url} href={href} desc={desc} tags={tags} />
+          ))}
         </div>
       </div>
 

@@ -1,7 +1,14 @@
 import Image from "next/image";
 import { S } from "./styles";
 
-const projects = [
+const projects: {
+  name: string;
+  subtitle: string;
+  stack: string[];
+  status: "in-progress" | "shipped";
+  bullets: string[];
+  url?: string;
+}[] = [
   {
     name: "AI Prior Authorization Assistant",
     subtitle: "Startup In Progress",
@@ -46,6 +53,18 @@ const projects = [
       "Developed a mobile app providing real-time usage analytics to parents, increasing behavioral compliance by 35%",
     ],
   },
+  {
+    name: "AI Bid Extractor",
+    subtitle: "Bid document analyzer",
+    stack: ["React", "JavaScript", "FastAPI", "Gemini AI"],
+    status: "shipped" as const,
+    url: "https://ai-bid-extractor.vercel.app/",
+    bullets: [
+      "Built a full-stack bid document analysis platform with a React/JavaScript frontend and Python FastAPI backend handling document ingestion and AI processing",
+      "Integrated Google Gemini AI through a structured multi-step prompt pipeline that parses uploaded bid documents and extracts deliverables, deadlines, and contractor requirements",
+      "Engineered a document-to-context pipeline converting raw PDFs into structured text chunks, optimizing token efficiency and LLM response accuracy",
+    ],
+  },
 ];
 
 const PROJECT_IMAGES: Record<string, { images: { src: string; alt: string }[] }> = {
@@ -76,6 +95,10 @@ const TAG_COLORS: Record<string, string> = {
   BLE:            "#4ec9b0",
   Healthcare:     "#7aa2f7",
   "Raspberry Pi": "#e0af68",
+  React:          "#7aa2f7",
+  JavaScript:     "#e0af68",
+  FastAPI:        "#4ec9b0",
+  "Gemini AI":    "#4a9eff",
 };
 
 function ProjectTag({ label }: { label: string }) {
@@ -115,6 +138,17 @@ export function ProjectsContent() {
                     <span style={{ fontSize: "10px", fontFamily: "var(--font-geist-mono), monospace", color: "#4ec9b0", backgroundColor: "#0a0a0a", border: "1px solid #4ec9b022", padding: "1px 6px" }}>
                       in-progress
                     </span>
+                  )}
+                  {proj.url && (
+                    <a
+                      href={proj.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ fontSize: "10px", fontFamily: "var(--font-geist-mono), monospace", color: "#e0af68", textDecoration: "none", border: "1px solid #e0af6833", padding: "1px 6px", backgroundColor: "#0a0a0a" }}
+                    >
+                      live ↗
+                    </a>
                   )}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
